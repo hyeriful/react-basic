@@ -1,54 +1,22 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Movie from "./Movie";
+import React from "react";
+// BrowerRouter 와의 차이는 url에 #이 없음. 근데 github pages에 정확히 설정하기가 HashRouter가 좋음.
+import { HashRouter, Route } from "react-router-dom";
+import Home from "./routes/Home";
+import About from "./routes/About";
+import Detail from "./routes/Details";
+import Navigation from "./components/Navigation";
 import "./App.css";
 
-function App(props) {
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const getMovies = async () => {
-    const {
-      data: {
-        data: { movies },
-      },
-    } = await axios.get(
-      "https://yts-proxy.now.sh/list_movies.json?sort_by=rating"
-    ); // yts.lt/api#list+movies
-    // console.log(movies);
-    setMovies(movies);
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
-    getMovies();
-  }, []);
-
+//컴포넌트 Route안에 있는 것은 props가 있음. (-> Navigation은 props가 없음)
+function App() {
+  //exact는 이거 아니면 렌더링 안한다는 뜻!
   return (
-    <section className="container">
-      {isLoading ? (
-        <div className="loader">
-          <span className="loader__text">Loading...</span>
-        </div>
-      ) : (
-        <div className="movies">
-          {movies.map((movie) => {
-            // console.log(movie);
-            return (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                year={movie.year}
-                title={movie.title}
-                summary={movie.summary}
-                poster={movie.medium_cover_image}
-                genres={movie.genres}
-              />
-            );
-          })}
-        </div>
-      )}
-    </section>
+    <HashRouter>
+      <Navigation />
+      <Route path="/" exact={true} component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/movie/:id" component={Detail} />
+    </HashRouter>
   );
 }
 
