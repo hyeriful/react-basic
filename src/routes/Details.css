@@ -1,5 +1,9 @@
-.movies .movie {
+.movie_detail {
+  text-align: center;
   background-color: white;
+  margin-top: 50px;
+  margin-left: 350px;
+  margin-right: 350px;
   margin-bottom: 70px;
   font-weight: 300;
   padding: 20px;
@@ -8,47 +12,45 @@
   box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
     0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
 }
-.movie :link {
-  /* .movie a */
-  display: grid;
-  grid-template-columns: minmax(150px, 1fr) 2fr;
-  grid-gap: 20px;
-  text-decoration: none; /*이것때문에 밑줄 없어짐*/
-  color: inherit;
-}
-.movie img {
+
+.movie_detail img {
   position: relative;
   top: -50px;
-  max-width: 150px;
+  max-width: 250px;
   width: 100%;
-  margin-right: 30px;
+  margin-bottom: -30px;
   box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
     0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
 }
 
-.movie .movie__title,
-.movie .movie__year {
+.movie_detail .movie__title,
+.movie_detail .movie__year {
   margin: 0;
   font-weight: 300;
 }
 
-.movie .movie__title {
+.movie_detail .movie__title {
   margin-bottom: 5px;
   font-size: 24px;
   color: #2c2c2c;
 }
 
-.movie .movie__genres {
+.movie_detail .movie__genres {
+  display: inline-flex;
   list-style: none;
   padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 5px 0px;
 }
 
 .movie__genres li,
-.movie .movie__year {
+.movie_detail .movie__year {
   margin-right: 10px;
   font-size: 14px;
+}
+
+.movie_detail .movie__summary {
+  font-size: 18px;
+  font-style: italic;
+  color: #473b0e;
+  margin-left: 10px;
+  margin-right: 10px;
 }
